@@ -1,21 +1,177 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-  <meta charset="utf-8">
-  <title>Offy</title>
-  <meta name="author" content="aw030">
-  <meta name="description" content="Offy - Off Canvas Menu">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <link href="css/style.css" rel="stylesheet">
+    <title>Offy - Off canvas menu</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/css/bootstrap.min.css" rel="stylesheet">
+    <link href="build/offy.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 </head>
-
 <body>
 
-  <p>Offy</p>
+    <div id="offy-outer">
+        <div id="offy-inner">
 
-  <script src="js/script.js"></script>
+            <nav id="offy-menu-top" class="offy-menu-top bg-dark">
+                <ul class="list-group">
+                    <li class="list-group-item bg-dark text-light">Cras justo odio</li>
+                    <li class="list-group-item bg-dark text-light">Dapibus ac facilisis in</li>
+                    <li class="list-group-item bg-dark text-light">Morbi leo risus</li>
+                </ul>
+            </nav>
+
+            <nav class="navbar navbar-dark bg-dark offy-navbar">
+                <button id="offy-trigger-left" class="offy-trigger" type="button">
+                    <svg class="offy-trigger-svg" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 100 100">
+                        <g>
+                            <path class="line line-1" d="M5 13h90v14H5z" />
+                            <path class="line line-2" d="M5 43h90v14H5z" />
+                            <path class="line line-3" d="M5 73h90v14H5z" />
+                        </g>
+                    </svg>
+                </button>
+                <a class="navbar-brand" href="/">Offy</a>
+                <button id="offy-trigger-top" class="offy-trigger" type="button">
+                    <svg class="offy-trigger-svg" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 100 100">
+                        <g>
+                            <path class="line line-1" d="M5 13h90v14H5z" />
+                            <path class="line line-2" d="M5 43h90v14H5z" />
+                            <path class="line line-3" d="M5 73h90v14H5z" />
+                        </g>
+                    </svg>
+                </button>
+                <button id="offy-trigger-right" class="offy-trigger" type="button">
+                    <svg class="offy-trigger-svg" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 100 100">
+                        <g>
+                            <path class="line line-1" d="M5 13h90v14H5z" />
+                            <path class="line line-2" d="M5 43h90v14H5z" />
+                            <path class="line line-3" d="M5 73h90v14H5z" />
+                        </g>
+                    </svg>
+                </button>
+            </nav>
+
+            <nav id="offy-menu-left" class="offy-menu bg-dark">
+                <ul class="list-group">
+                    <li class="list-group-item bg-dark text-light">Cras justo odio</li>
+                    <li class="list-group-item bg-dark text-light">Dapibus ac facilisis in</li>
+                    <li class="list-group-item bg-dark text-light">Morbi leo risus</li>
+                    <li class="list-group-item bg-dark text-light">Vestibulum at eros</li>
+                </ul>
+            </nav>
+
+            <nav id="offy-menu-right" class="offy-menu bg-dark">
+                <ul class="list-group">
+                    <li class="list-group-item bg-dark text-light">Cras justo odio</li>
+                    <li class="list-group-item bg-dark text-light">Dapibus ac facilisis in</li>
+                    <li class="list-group-item bg-dark text-light">Morbi leo risus</li>
+                    <li class="list-group-item bg-dark text-light">Vestibulum at eros</li>
+                </ul>
+            </nav>
+
+            <div class="container">
+                <main role="main">
+                    <div class="jumbotron">
+                        <div class="col-sm-8 mx-auto">
+                            <h1>Offy - Off Canvas menu</h1>
+                            <p>
+                                This is an example of <code>Offy</code>. Supporting <a href="https://getbootstrap.com">Bootstrap 4</a>, dependencies: <a href="https://jquery.com">jQuery</a>.
+                            </p>
+                            <p>
+                                Under construction
+                            </p>
+                            <p>
+                                <a class="btn btn-primary" href="https://github.com/aw030/offy" role="button"> View on Github</a>
+                            </p>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/js/bootstrap.min.js"></script>
+    <script src="build/offy.js"></script>
+
+    <script>
+        "use strict";
+        $(document).ready(function() {
+            var offy = new Offy({
+                top: {
+                    $menu: $('#offy-menu-top'),
+                    $trigger: $('#offy-trigger-top'),
+                    expandedClass: 'offy-expanded-top',
+                    position: 'top',
+                    layout: {
+                        menuShadow: true
+                    },
+                    callbacks: {
+                        onShow: function (detail) {
+                            console.log("onShow: " + JSON.stringify(detail));
+                        },
+                        onHide: function (detail) {
+                            console.log("onHide: " + JSON.stringify(detail));
+                        }
+                    }
+                },
+                left: {
+                    $menu: $('#offy-menu-left'),
+                    $trigger: $('#offy-trigger-left'),
+                    expandedClass: 'offy-expanded-left',
+                    position: 'left',
+                    layout: {
+                        menuShadow: true
+                    },
+                    callbacks: {
+                        onShow: function (detail) {
+                            console.log("onShow: " + JSON.stringify(detail));
+                        },
+                        onHide: function (detail) {
+                            console.log("onHide: " + JSON.stringify(detail));
+                        }
+                    }
+                },
+                right: {
+                    $menu: $('#offy-menu-right'),
+                    $trigger: $('#offy-trigger-right'),
+                    expandedClass: 'offy-expanded-right',
+                    position: 'right',
+                    callbacks: {
+                        onShow: function (detail) {
+                            console.log("onShow: " + JSON.stringify(detail));
+                        },
+                        onHide: function (detail) {
+                            console.log("onHide: " + JSON.stringify(detail));
+                        }
+                    }
+                },
+                global: {
+                    layout: {
+                        overlayShadow: true
+                    },
+                    callbacks: {
+                        onShow: function (detail) {
+                            console.log("onShow: " + JSON.stringify(detail));
+                        },
+                        onHide: function (detail) {
+                            console.log("onHide: " + JSON.stringify(detail));
+                        }
+                    }
+                }
+            });
+            
+            window.addEventListener("offy-expanded", function(e) {
+                console.log(JSON.stringify(e.detail));
+            });
+            
+            $("body").on("offy-expanded", function(e) {
+                console.log(JSON.stringify(e.detail));
+            });
+            
+            //offy.top.open();
+            //offy.top.close();
+            //offy.top.toggle();
+        });
+    </script>
 </body>
-
 </html>
